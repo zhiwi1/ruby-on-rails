@@ -1,0 +1,22 @@
+<h2>Add new post</h2>
+<%=form_for :post, url:posts_path do |f|%>
+  <% if @post.errors.any? %>
+   <% @post.errors.full_messages.each do|lol| %>
+      <div class="alert alert-danger"><%=lol %></div>
+      <%end %>
+    <%end %>
+  <p>Name<br>
+    <%=f.text_field :title ,class: 'form-control' %>
+  </p>
+  <p>Text of<br>
+    <%=f.text_area :body ,class: 'form-control' %>
+  </p>
+
+    <%=f.label  :all_tags  %>
+
+    <%=f.text_field :all_tags %>
+
+
+  <%=f.submit %>
+  </p>
+<%end %>

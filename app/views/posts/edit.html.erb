@@ -1,0 +1,17 @@
+<h2>edit new post</h2>
+<%=form_for :post, url:post_path(@post),method: :patch  do |f|%>
+  <% if @post.errors.any? %>
+    <% @post.errors.full_messages.each do|lol| %>
+      <div class="alert alert-danger"><%=lol %></div>
+    <%end %>
+  <%end %>
+  <p>Name<br>
+    <%=f.text_field :title ,class: 'form-control' %>
+  </p>
+  <p>Text of<br>
+    <%=f.text_area :body ,class: 'form-control' %>
+  </p>
+
+  <%=f.submit %>
+  </p>
+<%end %>

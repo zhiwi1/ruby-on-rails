@@ -1,0 +1,3 @@
+<h1>Profile</h1>
+<%=image_tag @person.avatar.url(:thumb) if @person.avatar? %>
+<%= link_to "Edit",edit_person_path(@person) %>

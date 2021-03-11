@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Myapp</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag 'https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css '%>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+
+  <body >
+
+  <header>
+
+    <div class="collapse bg-dark" id="navbarHeader">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-8 col-md-7 py-4">
+            <h4 class="text-white">About</h4>
+            <p class="text-muted">Add some information about the album below, the author, or any other background context. Make it a few sentences long so folks can pick up some informative tidbits. Then, link them off to some social networking sites or contact information.</p>
+          </div>
+          <div class="col-sm-4 offset-md-1 py-4">
+            <h4 class="text-white">Contact</h4>
+            <ul class="list-unstyled">
+              <li><a href="#" class="text-white">Follow on Twitter</a></li>
+              <li><a href="#" class="text-white">Like on Facebook</a></li>
+              <li><a href="#" class="text-white">Email me</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="navbar navbar-dark bg-dark shadow-sm">
+
+
+
+        <span class="navbar-brand d-flex align-items-center">
+          <%=link_to "Homepage",
+             home_path %>
+    </span>
+          <% if person_signed_in? %>
+             <ul class="nav navbar-nav navbar-right">
+        <li><%=link_to current_person.email, current_person%></li>
+
+                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+          <span>  <%=link_to "Add Post",
+                             new_post_path %></span>
+                 </button>
+
+              <button  class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+        <span>
+          <%=link_to "Sign out",
+                     destroy_person_session_path ,method: :delete %>
+        </span>
+               </button>
+      </ul>
+
+
+
+
+
+        <%else%>
+        <ul class="nav navbar-nav navbar-right">
+      <button  class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+        <span>
+          <%=link_to "Registration",
+                     new_person_registration_path %>
+        </span>
+      </button>
+      <button  class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+        <span>
+          <%=link_to "Sign in",new_person_session_path%>
+        </span>
+
+      </button>
+        <%end %>
+      </ul>
+      </div>
+
+
+  </header>
+
+    </div>
+    <%= yield %>
+  </div>
+  </body>
+</html>
