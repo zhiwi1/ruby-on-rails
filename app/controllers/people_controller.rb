@@ -1,22 +1,25 @@
-
+require 'pry'
 class PeopleController < ApplicationController
   before_action :authenticate_person!,only: [:edit, :update]
   before_action :check_authorization, only: [:edit,:update]
   before_action :set_person
+
   def show
-
   end
+
   def edit
-
-    @name=@person.email
   end
+
   def update
-    if @person.update(person_params)
+    @person.update(person_params)
+    #  binding.pry
+    if @person.valid?
       redirect_to @person
     else
       flash.now[:alert]="Something went wrong. Please try again"
       render :edit
     end
+    #   pry.inspect
 
   end
   private
