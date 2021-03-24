@@ -19,9 +19,14 @@
 
 <%=form_for Array[@post,@post.comments.build] do |f|%>
 
-  <p>user<br>
-    <%=f.text_field :username ,class: 'form-control' %>
-  </p>
+ <br>
+    <%#=f.label :username,"current_person.email"%>
+  <!--  <%#=link_to current_person.email, current_person%>-->
+ <%#:username: current_person.email %>
+    <%=f.text_field :username ,:readonly=>true,class: 'form-control' ,value:current_person.email%>
+  <%#=f.label :username,'lol' %>
+    <%#f.email_field :a %>
+
   <p>Text of comment<br>
     <%=f.text_area :body ,class: 'form-control' %>
   </p>
